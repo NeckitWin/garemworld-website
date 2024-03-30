@@ -1,0 +1,12 @@
+.main {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.together_part {
+    width: 1110px;
+    gap: 30px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+}
