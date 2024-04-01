@@ -18,8 +18,11 @@ const Monitoring = () => {
             <h3 className={s.title}>Мониторинг серверов</h3>
             <div className={s.servers_list}>
                 {servers.map(el => (
-                    <Server name={el.name} link={el.link} online={el.online} />
+                    <Server name={el.name} link={el.link} online={el.online}/>
                 ))}
+                <p href="#" className={s.servers_online}>
+                    Общий онлайн: в разработке
+                </p>
             </div>
         </div>
     )

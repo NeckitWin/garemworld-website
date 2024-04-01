@@ -9,10 +9,11 @@
     color: rgba(0, 0, 0, 0.9);
     transition: 0.3s ease;
 } .server:hover {
-      transform: scale(1.005);
-  } .server:last-child {
-        border-radius: 0 0 5px 5px;
-    }
+      transform: scale(1.01);
+  }
+.server:hover > .loading {
+    background-color: #99da02;
+}
 
 .description {
     display: flex;
@@ -31,4 +32,5 @@
     height: 22px;
     border: 10px solid #99da02;
     border-radius: 50%;
+    transition: 0.4s ease;
 }

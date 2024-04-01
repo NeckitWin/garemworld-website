@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <header>
             <nav className={s.menu}>
-                <NavLink to="/" className={s.logo}>GAREMWORLD</NavLink>
+                <NavLink to="/" className={s.logo}></NavLink>
                 <nav className={s.podmenu}>
                     <NavLink to="/">НАЧАТЬ ИГРУ</NavLink>
                     <NavLink to="/">СЕРВЕРА</NavLink>

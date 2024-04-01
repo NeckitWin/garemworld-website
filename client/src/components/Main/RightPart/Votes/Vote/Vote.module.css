@@ -1,0 +1,7 @@
+.vote img {
+    width: 88px;
+    height: 31px;
+    transition: 0.3s ease;
+} .vote img:hover {
+    transform: scale(1.05);
+  }

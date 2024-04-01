@@ -1,3 +1,9 @@
 .right_part {
     width: 256px;
 }
+
+@media only screen and (max-width: 768px) {
+    .right_part {
+        display: none;
+    }
+}
