@@ -1,0 +1,7 @@
+.info_frame {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 50px 0;
+    gap: 30px;
+}

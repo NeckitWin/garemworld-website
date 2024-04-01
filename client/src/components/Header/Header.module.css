@@ -1,0 +1,62 @@
+header {
+    height: 80px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 0 1px #ffffff;
+}
+
+.menu {
+    width: 1110px;
+    height: 80px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: #FE8065;
+    font-size: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}.logo:hover {
+    text-shadow: 0 0 15px #ff3200;
+    transform: scale(1.05);
+ }
+
+.podmenu {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.podmenu a {
+    color: #9da9b5;
+    font-size: 12px;
+    text-decoration: none;
+    transition: 0.3s ease;
+    font-weight: 500;
+} .podmenu a:hover {
+    color: #ffffff;
+      transform: translateY(-1px);
+  }
+
+.profile {
+    color: #ffffff;
+    font-size: 14px;
+    width: 190px;
+    height: 51px;
+    border-radius: 4px;
+    background-image: url("/public/img/button.png");
+    background-size: cover;
+    text-decoration: none;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s ease;
+} .profile:hover {
+    box-shadow: 0 0 8px #ff3200;
+    opacity: 0.8;
+ }
