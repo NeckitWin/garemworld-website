@@ -6,6 +6,8 @@ import Servers from "./Servers"
 import Donate from "./Donate"
 import Rules from "./Rules"
 import Info from "./Info"
+import User from "./User";
+import Login from "./Login";
 
 const Pages = () => {
     const links = [
@@ -32,6 +34,14 @@ const Pages = () => {
         {
             path: '/info',
             element: <Info />
+        },
+        {
+            path: '/user',
+            element: <User />
+        },
+        {
+            path: '/login',
+            element: <Login />
         }
     ]
     return (

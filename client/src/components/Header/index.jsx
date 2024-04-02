@@ -10,13 +10,10 @@ const Header = () => {
         {name: "ПРАВИЛА", path: "/rules"},
         {name: "О ПРОЕКТЕ", path: "/info"}
     ]
-
     const [active, setActive] = useState(null);
-
     const handleClick = (index) => {
         setActive(index)
     }
-
     return (
         <header>
             <nav className={s.menu}>
@@ -26,7 +23,7 @@ const Header = () => {
                         <NavLink key={index} onClick={()=>handleClick(index)} to={el.path} className={`${s.link} ${active===index ? s.active : ""}`}>{el.name}</NavLink>
                     ))}
                 </nav>
-                <NavLink to="/user" onClick={()=>setActive(null)} className={s.profile}><img src="img/icons/profile.png" alt="profile icon"/>Личный кабинет</NavLink>
+                <NavLink to="/login" onClick={()=>setActive(null)} className={s.profile}><img src="img/icons/profile.png" alt="profile icon"/>Личный кабинет</NavLink>
             </nav>
         </header>
     )

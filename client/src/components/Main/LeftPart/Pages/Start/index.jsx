@@ -8,21 +8,21 @@ const Start = () => {
             title: 'Авторизация',
             text: 'Зарегистрируйтесь у нас на сайте',
             linktext: 'Зарегистрироваться',
-            link: 'https://garemworld.su/login'
+            link: '/login'
         },
         {
             icon: 'https://media.tenor.com/hYkRcm80JFwAAAAj/foxy-foxplushy.gif',
             title: 'Лаунчер',
             text: 'Установите наш лаунчер, чтобы начать играть',
             linktext: 'Установить',
-            link: 'https://garemworld.su/start/#launcher'
+            link: 'https://launcher.garemworld.su/GaremWorld.exe'
         },
         {
             icon: 'https://media.tenor.com/-169fSymeTgAAAAj/anime-girl.gif',
             title: 'Сервера',
             text: 'Выберите сервер, на котором вы хотите играть',
             linktext: 'Сервера',
-            link: 'https://garemworld.su/servers'
+            link: '/servers'
         }
     ]
 
@@ -52,10 +52,10 @@ const Start = () => {
                            link={block.link}/>
                 ))}
             </div>
-            <h3>Скачать лаунчер</h3>
+            <h3 id="launcher">Скачать лаунчер</h3>
             <div className={s.blocks}>
                 {launchers.map((block, index) => (
-                    <Block key={index} icon={block.icon} title={block.title} text={block.text} linktext={block.linktext}
+                    <Block key={index} index={index} icon={block.icon} title={block.title} text={block.text} linktext={block.linktext}
                            link={block.link}/>
                 ))}
             </div>
