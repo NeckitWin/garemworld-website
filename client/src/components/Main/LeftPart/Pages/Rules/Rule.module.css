@@ -1,0 +1,35 @@
+.rules {
+    list-style-type: none;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.rules>li {
+    background-color: rgb(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.rule_num {
+    color: rgba(254, 91, 115);
+    font-weight: bold;
+}
+
+.rule {
+    color: #fff;
+}
+
+.violation {
+    color: #cc0000;
+}
+
+.rules_podlist {
+    margin-left: 10px;
+    list-style-type: "- ";
+}
+
+.rules_podlist p {
+    font-weight: bold;
+}

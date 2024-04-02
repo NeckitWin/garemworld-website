@@ -48,6 +48,11 @@ header {
     transform: translateY(-1px);
 }
 
+.active {
+    color: #ffffff !important;
+    transform: translateY(-1px);
+}
+
 .profile {
     color: #ffffff;
     font-size: 14px;

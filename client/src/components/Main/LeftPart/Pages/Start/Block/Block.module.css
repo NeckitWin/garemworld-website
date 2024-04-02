@@ -1,0 +1,39 @@
+.block {
+    background-color: rgb(0, 0, 0, 0.5);
+    /*background: rgba(254, 91, 115, 0.2);*/
+    width: 200px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    transition: 0.3s ease;
+    border-radius: 5px;
+}
+
+.block a {
+    color: #fff;
+    text-decoration: none;
+    background-color: rgb(255, 255, 255, 0.1);
+    font-size: 16px;
+    padding: 10px 15px;
+    width: fit-content;
+    transition: 0.3s ease;
+    border-radius: 5px;
+}
+.block:hover {
+    transform: translateY(-5px);
+    background: rgba(254, 91, 115, 0.3);
+}
+.block:hover a {
+    transform: scale(1.05) translateY(-2px);
+}
+.block img {
+    width: 100px;
+    height: 120px;
+    object-fit: cover;
+}
+.block p {
+    text-align: center;
+}

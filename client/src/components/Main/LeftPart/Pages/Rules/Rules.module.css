@@ -1,0 +1,22 @@
+.rules_frame {
+    background-color: rgb(0,0,0,0.5);
+    border-radius: 10px;
+}
+.rules_links {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}  .rules_links a {
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s ease;
+} .rules_links a:hover {
+      background-color: rgba(49, 49, 49, 0.6);
+    box-shadow: 0 0 10px rgba(50, 50, 50);
+}  .active {
+    background-color: rgba(254, 91, 115, 0.7) !important;
+    box-shadow: 0 0 10px rgba(254, 91, 115) !important;
+}
+

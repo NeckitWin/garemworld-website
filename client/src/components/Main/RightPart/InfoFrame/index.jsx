@@ -4,7 +4,7 @@ import InfoLink from "./InfoLink";
 const InfoFrame = () => {
     const data = [
         {
-            link: "https://launcher.garemworld.su/GaremWorld.exe?v=RANDOM_VALUE",
+            link: "https://garemworld.su/start",
             icon: "img/icons/pickaxe.png",
             title: "Лаунчер",
             description: "Установите лаунчер и начните игру!"
