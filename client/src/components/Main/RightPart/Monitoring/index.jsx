@@ -17,8 +17,8 @@ const Monitoring = () => {
         <div className={s.monitoring_frame}>
             <h3 className={s.title}>Мониторинг серверов</h3>
             <div className={s.servers_list}>
-                {servers.map(el => (
-                    <Server name={el.name} link={el.link} online={el.online}/>
+                {servers.map((el, index) => (
+                    <Server key={index} name={el.name} link={el.link} online={el.online}/>
                 ))}
                 <p href="#" className={s.servers_online}>
                     Общий онлайн: в разработке

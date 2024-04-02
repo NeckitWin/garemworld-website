@@ -1,23 +1,36 @@
-const express = require('express');
-const config = require('config');
-const db = require('./modules/db');
-const queries = require('./modules/queries');
+const express = require('express')
+const config = require('config')
+const mysql = require('mysql')
+const cors = require('cors')
+
+const PORT = config.get('serverPort')
+const IP = config.get('serverIP')
+const user = config.get('userDB')
+const password = config.get('passwordDB')
+const database = config.get('database')
 
 const app = express();
-const PORT = config.get('serverPort');
+app.use(cors());
 
-// Маршрут для получения данных из базы данных
-app.get('/api/data', (req, res) => {
-    queries.getData((error, data) => {
-        if (error) {
-            res.status(500).json({ error: 'Ошибка сервера' });
-        } else {
-            res.json(data);
-        }
-    });
-});
+const db = mysql.createConnection({
+    host: IP,
+    user: user,
+    password: password,
+    database: database
+})
 
-// Запуск сервера
+app.get('/', (re, res) => {
+    return res.send('Бэкэнд сторона')
+})
+
+app.get('/users', (req, res)=>{
+    const sql = 'SELECT * FROM users'
+    db.query(sql, (err, data) => {
+        if (err) {console.log(err)}
+        res.json(data)
+    })
+})
+
 app.listen(PORT, () => {
-    console.log(`Сервер запущен на порту ${PORT}`);
-});
+    console.log(`Порт ${PORT} запущен`)
+})

@@ -18,7 +18,7 @@ const InfoFrame = () => {
     return (
         <div className={s.info_frame}>
             {data.map((el, index) => (
-                <InfoLink link={el.link} icon={el.icon} title={el.title} description={el.description}/>
+                <InfoLink key={index} link={el.link} icon={el.icon} title={el.title} description={el.description}/>
             ))}
         </div>
     )

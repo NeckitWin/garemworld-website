@@ -8,6 +8,7 @@ import Rules from "./Rules"
 import Info from "./Info"
 import User from "./User";
 import Login from "./Login";
+import Test from "./Test";
 
 const Pages = () => {
     const links = [
@@ -42,6 +43,10 @@ const Pages = () => {
         {
             path: '/login',
             element: <Login />
+        },
+        {
+            path: '/test',
+            element: <Test />
         }
     ]
     return (
