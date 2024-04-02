@@ -5,7 +5,7 @@
 .rules_links {
     padding: 10px;
     display: flex;
-    flex-wrap: wrap;g
+    flex-wrap: wrap;
     justify-content: space-around;
 }  .rules_links a {
     border-radius: 10px;
