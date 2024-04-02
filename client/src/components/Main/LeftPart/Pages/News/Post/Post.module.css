@@ -1,0 +1,45 @@
+.post {
+    background-color: rgb(0, 0, 0, 0.7);
+    width: 100%;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.post img {
+    width: 100%;
+    height: 320px;
+    border-radius: 5px 5px 0 0;
+    object-fit: cover;
+}
+
+.podpost {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.podpost h3 {
+    text-shadow: 0 0 10px #fff;
+}
+
+.post_info {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.post_info a {
+    color: #fff;
+    text-decoration: none;
+    background-color: rgba(254, 91, 115, 0.7);
+    padding: 10px 25px;
+    border-radius: 5px;
+    transition: 0.4s ease;
+}
+
+.post_info a:hover {
+    box-shadow: 0 0 10px rgba(254, 91, 115, 1);
+    transform: translateX(5px);
+}
