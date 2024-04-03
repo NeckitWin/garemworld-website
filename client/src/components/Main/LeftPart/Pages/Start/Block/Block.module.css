@@ -24,10 +24,12 @@
 }
 .block:hover {
     transform: translateY(-5px);
-    background: rgba(254, 91, 115, 0.3);
+    background-color: rgb(255, 255, 255, 0.2);
 }
 .block:hover a {
     transform: scale(1.05) translateY(-2px);
+    background-color: rgb(0, 0, 0, 0.6);
+    box-shadow: 0 3px 5px rgb(0, 0, 0, 0.8);
 }
 .block img {
     width: 100px;
