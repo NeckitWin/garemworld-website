@@ -7,8 +7,7 @@ import Donate from "./Donate"
 import Rules from "./Rules"
 import Info from "./Info"
 import User from "./User";
-import Login from "./Login";
-import Test from "./Test";
+import Signup from "./Signup";
 
 const Pages = () => {
     const links = [
@@ -41,12 +40,8 @@ const Pages = () => {
             element: <User />
         },
         {
-            path: '/login',
-            element: <Login />
-        },
-        {
-            path: '/test',
-            element: <Test />
+            path: '/signup',
+            element: <Signup />
         }
     ]
     return (

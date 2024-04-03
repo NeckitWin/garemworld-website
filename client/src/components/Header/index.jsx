@@ -23,7 +23,7 @@ const Header = () => {
                         <NavLink key={index} onClick={()=>handleClick(index)} to={el.path} className={`${s.link} ${active===index ? s.active : ""}`}>{el.name}</NavLink>
                     ))}
                 </nav>
-                <NavLink to="/login" onClick={()=>setActive(null)} className={s.profile}><img src="img/icons/profile.png" alt="profile icon"/>Личный кабинет</NavLink>
+                <NavLink to="/user" onClick={()=>setActive(null)} className={s.profile}><img src="img/icons/profile.png" alt="profile icon"/>Личный кабинет</NavLink>
             </nav>
         </header>
     )

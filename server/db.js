@@ -6,7 +6,7 @@ import crypto from 'crypto';
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
 import bodyParser from "body-parser";
-import { body, validationResult } from 'express-validator'
+import {body, validationResult} from 'express-validator'
 
 const IP = config.get('serverIP')
 const userDB = config.get('userDB')
@@ -15,7 +15,7 @@ const database = config.get('database')
 
 const app = express()
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://garemworld.su'],
+    origin: ['https://garemworld.su'],
     methods: ['GET', 'POST'],
     credentials: true
 }))
@@ -36,13 +36,14 @@ const db = mysql.createConnection({
     user: userDB,
     password: passwordDB,
     database: database
-}, (err) => { if (err) console.log("Ошибка подключения к бд") })
+}, (err) => {
+    if (err) console.log("Ошибка подключения к бд")
+})
 
-app.get('/', (req, res) => {
+app.get('/user', (req, res) => {
     if (req.session.username) {
         return res.json({valid: true, username: req.session.username})
-    }
-    else {
+    } else {
         return res.json({valid: false})
     }
 })
@@ -54,19 +55,45 @@ app.post('/signup',
         body('password').trim().escape()
     ],
     (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.json({message: "Некорректные данные"})
-    }
-    const hashedPassword = crypto.createHash('sha256').update(req.body.password.join('')).digest('hex');
-    const sql = "INSERT INTO users (`username`, `email`, `password`) VALUES (?)"
-    const values = [req.body.username, req.body.email, hashedPassword]
-    db.query(sql, [values], (err, result) => {
-        if (err) return res.json({message: "Ошибка регистрации"})
-        console.log(`Пользователь ${req.body.username} | ${req.body.email} успешно зарегистрирован`)
-        return res.json({message: "Регистрация прошла успешно"})
-    })
-})
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.json({message: "Вы ввели некорректные данные"});
+        }
+
+        // Проверяем, существует ли пользователь с таким именем пользователя
+        const usernameQuery = "SELECT * FROM users WHERE username = ?";
+        db.query(usernameQuery, [req.body.username], (err, usernameResult) => {
+            if (err) {
+                return res.json({message: "Ошибка подключения сайта, обратитесь к администрации"});
+            }
+            if (usernameResult.length > 0) {
+                return res.json({message: "Пользователь с таким именем уже существует"});
+            }
+
+            // Проверяем, существует ли пользователь с таким адресом электронной почты
+            const emailQuery = "SELECT * FROM users WHERE email = ?";
+            db.query(emailQuery, [req.body.email], (err, emailResult) => {
+                if (err) {
+                    return res.json({message: "Ошибка подключения сайта, обратитесь к администрации"});
+                }
+                if (emailResult.length > 0) {
+                    return res.json({message: "Данный адрес электронной почты уже занят"});
+                }
+
+                // Если ни имя пользователя, ни адрес электронной почты не заняты, регистрируем нового пользователя
+                const hashedPassword = crypto.createHash('sha256').update(req.body.password.join('')).digest('hex');
+                const insertSql = "INSERT INTO users (`username`, `email`, `password`) VALUES (?, ?, ?)";
+                const values = [req.body.username, req.body.email, hashedPassword];
+                db.query(insertSql, values, (err, result) => {
+                    if (err) {
+                        return res.json({message: "Ошибка регистрации"});
+                    }
+                    console.log(`Пользователь ${req.body.username} | ${req.body.email} успешно зарегистрирован`);
+                    return res.json({message: true});
+                });
+            });
+        });
+    });
 
 app.post('/login',
     [
@@ -84,14 +111,13 @@ app.post('/login',
         db.query(sql, [req.body.username, hashedPassword], (err, result) => {
             if (err) {
                 console.error("Ошибка авторизации:", err);
-                return res.json({ Message: "Ошибка авторизации" });
+                return res.json({message: "Ошибка авторизации"});
             }
             if (result.length > 0) {
                 req.session.username = result[0].username;
                 console.log(`Пользователь ${req.session.username} успешно авторизован`);
-                return res.json({ Login: true })
-            }
-            else return res.json({ Login: false })
+                return res.json({message: true})
+            } else return res.json({message: "Неверный логин или пароль"})
         });
     });
 
