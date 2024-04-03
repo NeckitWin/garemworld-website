@@ -8,7 +8,7 @@ const News = () => {
             title: 'Открытие проекта!',
             description: 'Мы рады приветствовать вас на нашем проекте!',
             date: '01.04.2024',
-            link: 'https://garemworld.su'
+            link: 'https://discord.gg/tDGak75V4u'
         }
     ]
     return (

@@ -1,3 +1,64 @@
-s.profile {
+.profile {
     margin-top: 35px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile_data {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.profile_data img {
+    width: 80px;
+    height: 80px;
+}
+
+.profile_data div {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile_data div p:first-child {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.wallet {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.profile nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    padding: 0 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.profile nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }

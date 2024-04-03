@@ -8,7 +8,7 @@ const Post = (props) => {
                 <h3>{props.title}</h3>
                 <p>{props.description}</p>
                 <div className={s.post_info}>
-                    <a href={props.link}>Узнать больше</a>
+                    <a href={props.link} target="_blank" rel="noreferrer">Узнать больше</a>
                     <span>{props.date}</span>
                 </div>
             </div>
