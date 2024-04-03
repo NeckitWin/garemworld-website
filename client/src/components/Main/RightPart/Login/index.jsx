@@ -3,7 +3,7 @@ import {useState} from "react";
 import {NavLink, useNavigate} from "react-router-dom";
 import axios from "axios";
 
-const Login = () => {
+const Login = ({login, setLogin}) => {
     const [values, setValues] = useState({
         username: '',
         password: ''
@@ -14,7 +14,7 @@ const Login = () => {
     const navigate = useNavigate()
 
     const handleInput = (event) => {
-        setValues(prev=>({...prev, [event.target.name]: [event.target.value] }))
+        setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
     }
 
     axios.defaults.withCredentials = true
@@ -22,15 +22,11 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
 
-        setError('')
-
         axios.post('https://api.garemworld.su/login', values)
-            .then(res =>
-            {
+            .then(res => {
                 if (res.data.message === true) {
-                    navigate('/')
+                    setLogin(true)
                 } else {
-                    console.log(res.data.message)
                     setError(res.data.message)
                 }
             })
@@ -41,10 +37,12 @@ const Login = () => {
         <div>
             <form onSubmit={handleSubmit} className={s.form_frame}>
                 <h3>Войти в аккаунт</h3>
-                <input name="username" onChange={handleInput} type="text" placeholder="Никнейм" pattern="[a-zA-Z0-9]+" minLength="3" maxLength="16" required />
-                <input name="password" onChange={handleInput} type="password" placeholder="Пароль" pattern="[a-zA-Z0-9]+" minLength="8" maxLength="52" required />
+                <input name="username" onChange={handleInput} type="text" placeholder="Никнейм" pattern="[a-zA-Z0-9]+"
+                       minLength="3" maxLength="16" required/>
+                <input name="password" onChange={handleInput} type="password" placeholder="Пароль"
+                       pattern="[a-zA-Z0-9]+" minLength="8" maxLength="52" required/>
                 <button>Войти</button>
-                {error && <p className={s.error}>{ error }</p>}
+                {error && <p className={s.error}>{error}</p>}
                 <NavLink to='/signup'>Зарегистрироваться</NavLink>
             </form>
         </div>

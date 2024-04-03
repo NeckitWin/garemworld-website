@@ -121,6 +121,11 @@ app.post('/login',
         });
     });
 
+app.post('/logout', (req, res) => {
+    req.session.destroy();
+    return res.json({message: true})
+})
+
 app.listen(8081, () => {
     console.log('Server is running on port 8081')
 })

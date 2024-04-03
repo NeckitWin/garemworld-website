@@ -3,7 +3,7 @@
 }
 
 @media only screen and (max-width: 768px) {
-    .right_part {
-        display: none;
+    .right_part > div {
+        margin: 20px auto;
     }
 }

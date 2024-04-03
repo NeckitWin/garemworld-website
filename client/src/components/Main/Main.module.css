@@ -17,6 +17,8 @@
     }
 
     .together_part {
+        display: flex;
+        justify-content: center;
         max-width: 100%;
         flex-wrap: wrap;
     }

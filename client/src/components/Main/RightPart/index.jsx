@@ -4,12 +4,21 @@ import Monitoring from "./Monitoring";
 import Votes from "./Votes";
 import Login from "./Login";
 import Profile from "./Profile";
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const RightPart = () => {
+    const navigate = useNavigate()
+    const [login, setLogin] = useState(false)
+    useEffect(() => {
+        if (login) {
+            navigate('/')
+        }
+    }, [login])
     return (
         <div className={s.right_part}>
-            <Login />
-            <Profile />
+            {!login && <Login login={login} setLogin={setLogin} />}
+            {login && <Profile />}
             <InfoFrame/>
             <Votes/>
             <Monitoring/>
