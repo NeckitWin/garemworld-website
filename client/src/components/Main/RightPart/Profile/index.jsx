@@ -1,12 +1,25 @@
 import s from './Profile.module.css'
 import {NavLink} from "react-router-dom";
 import {useState} from "react";
+import axios from "axios";
 
 const Profile = () => {
-    const [name, setName] = useState('NeckitWin')
-    const [money, setMoney] = useState(0)
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [coins, setCoins] = useState(0)
     const [gems, setGems] = useState(0)
-    const [role, setRole] = useState('Игрок')
+    const [role, setRole] = useState('')
+    axios.get('https://api.garemworld.su/user')
+        .then(res => {
+            if ( res.data.valid ) {
+                console.log(res.data)
+                setName(res.data.username)
+                setCoins(res.data.result.coin)
+                setGems(res.data.result.gem)
+                setRole('Игрок')
+            }
+        })
+        .catch(err => console.log(err))
     return (
         <div className={s.profile}>
             <div className={s.profile_data}>
@@ -18,7 +31,7 @@ const Profile = () => {
                 </div>
             </div>
             <div className={s.wallet}>
-                <span>{money} монет</span>
+                <span>{coins} монет</span>
                 <span>{gems} гемов</span>
             </div>
             <nav>

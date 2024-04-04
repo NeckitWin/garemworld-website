@@ -42,7 +42,29 @@ const db = mysql.createConnection({
 
 app.get('/user', (req, res) => {
     if (req.session.username) {
-        return res.json({valid: true, username: req.session.username})
+        const sql = `
+            SELECT u.email, w.coin, w.gem 
+            FROM users u 
+            LEFT JOIN wallet w ON u.userid = w.userid 
+            WHERE u.username = ?;
+            `
+        db.query(sql, [req.session.username], (err, result) => {
+            if (err) {
+                console.error("Ошибка получения данных пользователя:", err)
+                return res.json({message: "Ошибка подключения к базе данных"})
+            }
+            if (result.length > 0) {
+                return res.json({
+                    valid: true,
+                    username: req.session.username,
+                    result: result[0]
+                })
+            } else {
+                return res.json({message: "Ошибка получения данных пользователя"})
+            }
+        })
+
+        // return res.json({valid: true, username: req.session.username})
     } else {
         return res.json({valid: false})
     }
