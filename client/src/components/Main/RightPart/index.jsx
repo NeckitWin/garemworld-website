@@ -1,11 +1,11 @@
 import s from './RightPart.module.css'
-import InfoFrame from "./InfoFrame";
-import Monitoring from "./Monitoring";
-import Votes from "./Votes";
-import Login from "./Login";
-import Profile from "./Profile";
-import {useEffect, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import InfoFrame from "./InfoFrame"
+import Monitoring from "./Monitoring"
+import Votes from "./Votes"
+import Login from "./Login"
+import Profile from "./Profile"
+import {useEffect, useState} from "react"
+import {useNavigate} from "react-router-dom"
 
 const RightPart = () => {
     const navigate = useNavigate()
@@ -14,11 +14,11 @@ const RightPart = () => {
         if (login) {
             navigate('/')
         }
-    }, [login])
+    }, [login, navigate])
     return (
         <div className={s.right_part}>
-            {!login && <Login login={login} setLogin={setLogin} />}
-            {login && <Profile />}
+            {!login && <Login login={login} setLogin={setLogin}/>}
+            {login && <Profile/>}
             <InfoFrame/>
             <Votes/>
             <Monitoring/>

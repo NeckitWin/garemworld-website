@@ -32,7 +32,7 @@ const Pages = () => {
             element: <Rules />
         },
         {
-            path: '/info',
+            path: '/info/*',
             element: <Info />
         },
         {

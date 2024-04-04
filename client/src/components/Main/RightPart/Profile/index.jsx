@@ -5,7 +5,6 @@ import axios from "axios";
 
 const Profile = () => {
     const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
     const [coins, setCoins] = useState(0)
     const [gems, setGems] = useState(0)
     const [role, setRole] = useState('')
