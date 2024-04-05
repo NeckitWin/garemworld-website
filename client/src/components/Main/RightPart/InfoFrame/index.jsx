@@ -5,12 +5,12 @@ const InfoFrame = () => {
     const data = [
         {
             link: "/start",
-            icon: "img/icons/pickaxe.png",
+            icon: "/img/icons/pickaxe.png",
             title: "Лаунчер",
             description: "Установите лаунчер и начните игру!"
         }, {
             link: "https://discord.gg/tDGak75V4u",
-            icon: "img/icons/discord.png",
+            icon: "/img/icons/discord.png",
             title: "Discord",
             description: "Форум и приятное общение!"
         }

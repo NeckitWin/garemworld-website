@@ -1,0 +1,32 @@
+.info_navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.info_navbar {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.info_navbar a {
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.info_navbar a:hover {
+    background-color: rgba(50, 50, 50, 0.7);
+    box-shadow: 0 4px 4px rgba(50, 50, 50, 0.5);
+}
+
+.active {
+    background-color: rgba(254, 91, 115, 0.7) !important;
+    box-shadow: 0 4px 4px rgba(254, 91, 115, 0.5) !important;
+}
+

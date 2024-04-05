@@ -4,7 +4,7 @@ import InfoContent from "./InfoContent";
 
 const Info = () => {
     return (
-        <div>
+        <div className={s.info}>
             <InfoNavBar />
 
             <InfoContent />

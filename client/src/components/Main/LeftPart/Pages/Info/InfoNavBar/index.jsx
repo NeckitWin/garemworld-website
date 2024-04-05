@@ -1,5 +1,6 @@
 import s from './InfoNavBar.module.css'
 import {NavLink} from "react-router-dom";
+import {useState} from "react";
 
 const InfoNavBar = () => {
     const infoLinks = [
@@ -16,14 +17,21 @@ const InfoNavBar = () => {
             content: 'Состав проекта'
         },
         {
-            path: '/info/contacts',
-            content: 'Контакты'
+            path: '/info/problems',
+            content: 'Помощь'
         }
     ]
+
+    const [active, setActive] = useState(null)
+
+    const handleClick = (index) => {
+        setActive(index)
+    }
+
     return (
         <div className={s.info_navbar}>
             {infoLinks.map((el, index) => (
-                <NavLink key={index} to={el.path}>{el.content}</NavLink>
+                <NavLink onClick={()=>handleClick(index)} className={active===index ? s.active : ""} key={index} to={el.path}>{el.content}</NavLink>
             ))}
         </div>
     )

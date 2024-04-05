@@ -1,0 +1,46 @@
+[
+  {
+    "name": "/spawn",
+    "description": "Телепортация на спавн"
+  },
+  {
+    "name": "/sethome",
+    "description": "Установить точку дома"
+  },
+  {
+    "name": "/home",
+    "description": "Телепортация домой"
+  },
+  {
+    "name": "/tpa /call",
+    "description": "Предложить телепортацию"
+  },
+  {
+    "name": "/tpaccept",
+    "description": "Принять телепортацию"
+  },
+  {
+    "name": "/tpdeny",
+    "description": "Отклонить телепортацию"
+  },
+  {
+    "name": "/tp",
+    "description": "Телепортация к игроку"
+  },
+  {
+    "name": "/warps",
+    "description": "Список варпов"
+  },
+  {
+    "name": "/kit",
+    "description": "Кит"
+  },
+  {
+    "name": "/kits",
+    "description": "Список китов"
+  },
+  {
+    "name": "/rules",
+    "description": "Правила сервера"
+  }
+]
