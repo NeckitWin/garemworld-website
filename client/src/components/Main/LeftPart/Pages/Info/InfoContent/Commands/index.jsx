@@ -3,7 +3,7 @@ import commands from './commands.json'
 
 const Commands = () => {
     return (
-        <table className={s.table}>
+        <table className={s.info_table}>
             <tr>
                 <th>Команда</th>
                 <th>Описание</th>

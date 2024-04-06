@@ -26,6 +26,7 @@ const Login = ({login, setLogin}) => {
             .then(res => {
                 if (res.data.message === true) {
                     setLogin(true)
+                    navigate('/')
                 } else {
                     setError(res.data.message)
                 }

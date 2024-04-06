@@ -12,35 +12,27 @@
     "description": "Телепортация домой"
   },
   {
-    "name": "/tpa /call",
-    "description": "Предложить телепортацию"
+    "name": "/tpa /call <ник>",
+    "description": "Предложить телепортацию игроку"
   },
   {
     "name": "/tpaccept",
-    "description": "Принять телепортацию"
+    "description": "Принять телепортацию от игрока"
   },
   {
     "name": "/tpdeny",
-    "description": "Отклонить телепортацию"
+    "description": "Отклонить телепортацию игрока"
   },
   {
-    "name": "/tp",
-    "description": "Телепортация к игроку"
+    "name": "/warp list",
+    "description": "Показать список варпов"
   },
   {
-    "name": "/warps",
-    "description": "Список варпов"
+    "name": "/warp <название>",
+    "description": "Телепортация на варп"
   },
   {
     "name": "/kit",
-    "description": "Кит"
-  },
-  {
-    "name": "/kits",
-    "description": "Список китов"
-  },
-  {
-    "name": "/rules",
-    "description": "Правила сервера"
+    "description": "Открывает меню китов"
   }
 ]

@@ -1,0 +1,32 @@
+.table_roles {
+    width: 100%;
+    border-spacing: 0 1px;
+}
+
+.table_roles th, .table_roles td {
+    padding: 8px 10px;
+    color: #fff;
+}
+
+.table_roles th {
+    border-bottom: 3px solid #FFA558;
+    border-collapse: collapse;
+    text-shadow: 0 0 10px #FFA558;
+    font-size: 20px;
+    text-align: left;
+}
+
+.table_roles td:first-child {
+    color: #FFA558;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    transform: skew(-15deg);
+}

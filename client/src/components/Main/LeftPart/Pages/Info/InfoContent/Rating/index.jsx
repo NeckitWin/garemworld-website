@@ -1,7 +1,7 @@
 const Rating = () => {
     return (
         <div>
-            <h1>Info</h1>
+            <h2 style={{color: '#fff', padding: '10px', textAlign: 'center'}}>В разработке</h2>
         </div>
     )
 }

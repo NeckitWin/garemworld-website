@@ -1,0 +1,30 @@
+.info_table {
+    width: 100%;
+    border-spacing: 0 1px;
+}
+
+.info_table tr {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.info_table th {
+    font-size: 20px;
+    text-shadow: 0 0 10px #FFA558;
+    border-bottom: 3px solid #FFA558;
+}
+
+.info_table td:first-child {
+    color: #FFA558;
+    font-weight: bold;
+    text-align: center;
+}
+
+.info_table td:last-child {
+    /*width: 100%;*/
+}
+
+.info_table th, .info_table td {
+    padding: 10px;
+    color: #fff;
+}

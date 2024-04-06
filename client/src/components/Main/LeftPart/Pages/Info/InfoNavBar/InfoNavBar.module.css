@@ -2,14 +2,8 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-}
-
-
-.info_navbar {
     padding: 10px;
-    display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
 }
 
 .info_navbar a {
