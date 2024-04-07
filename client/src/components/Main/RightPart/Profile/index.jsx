@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import {useState} from "react";
 import axios from "axios";
 
-const Profile = () => {
+const Profile = ({setLogin}) => {
     const [name, setName] = useState('')
     const [coins, setCoins] = useState(0)
     const [gems, setGems] = useState(0)
@@ -11,7 +11,6 @@ const Profile = () => {
     axios.get('https://api.garemworld.su/user')
         .then(res => {
             if ( res.data.valid ) {
-                console.log(res.data)
                 setName(res.data.username)
                 setCoins(res.data.result.coin)
                 setGems(res.data.result.gem)
@@ -19,6 +18,16 @@ const Profile = () => {
             }
         })
         .catch(err => console.log(err))
+
+    const exit = async () => {
+        await axios.get('https://api.garemworld.su/logout')
+            .then((response) => {
+                if (response.data.message === true) {
+                    setLogin(false)
+                }
+            })
+            .catch(err => console.error(err));
+    }
     return (
         <div className={s.profile}>
             <div className={s.profile_data}>
@@ -35,7 +44,7 @@ const Profile = () => {
             </div>
             <nav>
                 <NavLink to={'/user'}>Личный кабинет</NavLink>
-                <NavLink to={'/logout'}>Выйти</NavLink>
+                <NavLink onClick={exit} to={'/'}>Выйти</NavLink>
             </nav>
         </div>
     )

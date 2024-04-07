@@ -22,8 +22,8 @@ const RightPart = () => {
 
     return (
         <div className={s.right_part}>
-            {!login && <Login login={login} setLogin={setLogin}/>}
-            {login && <Profile/>}
+            {!login && <Login setLogin={setLogin}/>}
+            {login && <Profile setLogin={setLogin}/>}
             <InfoFrame/>
             <Votes/>
             <Monitoring/>

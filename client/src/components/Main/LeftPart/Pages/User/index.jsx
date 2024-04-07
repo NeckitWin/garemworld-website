@@ -5,20 +5,47 @@ import {useNavigate} from "react-router-dom";
 
 const User = () => {
     const [name, setName] = useState('')
+    const [date, setDate] = useState('')
+    const [email, setEmail] = useState('')
     const navigate = useNavigate()
     useEffect(() => {
         axios.get('https://api.garemworld.su/user')
             .then(res => {
-                if ( res.data.valid ) {
+                if (res.data.valid) {
                     setName(res.data.username)
-                }
-                else navigate('/signup')
+                    setDate(res.data.result.date)
+                    setEmail(res.data.result.email)
+                } else navigate('/signup')
             })
             .catch(err => console.log(err))
-    }, []);
+    }, [navigate]);
+
+    const handleSubmit = async (event) => {
+
+    }
+
     return (
         <div className={s.user}>
-            <h3>Теперь вы можете авторизоваться в лаунчере под ником {name}</h3>
+            <div className={s.user_frame}>
+                <div className={s.skin}>
+                </div>
+                <div className={s.user_info}>
+                    <h3>Данные игрока {name}</h3>
+                    <p><span>Дата регистрации</span><span>{date}</span></p>
+                    <p><span>Email</span><span>{email}</span></p>
+                    <p><span>Статус в игре</span>Игрок<span></span></p>
+                </div>
+            </div>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="skin">Загрузить скин</label><br/>
+                <input type="file" name="skin"/><br/>
+                <label htmlFor="cloak">Загрузить плащ</label><br/>
+                <input type="file" name="cloak"/><br/>
+                <label htmlFor="email">Изменить аватар</label><br/>
+                <input type="file" name="avatar"/><br/>
+                <button>Сохранить</button>
+
+            </form>
         </div>
     )
 }

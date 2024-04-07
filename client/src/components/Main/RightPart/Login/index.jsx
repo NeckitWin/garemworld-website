@@ -23,7 +23,7 @@ const Login = ({setLogin}) => {
 
         axios.post('https://api.garemworld.su/login', values)
             .then((response) => {
-                if (response.data.success === true) {
+                if (response.data.message === true) {
                     setLogin(true)
                     navigate('/')
                 } else {
