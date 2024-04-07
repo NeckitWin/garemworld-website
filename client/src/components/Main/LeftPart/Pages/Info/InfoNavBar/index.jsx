@@ -22,7 +22,7 @@ const InfoNavBar = () => {
         }
     ]
 
-    const [active, setActive] = useState(null)
+    const [active, setActive] = useState(0)
 
     const handleClick = (index) => {
         setActive(index)

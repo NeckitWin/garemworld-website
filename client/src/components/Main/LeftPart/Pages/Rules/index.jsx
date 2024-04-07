@@ -42,7 +42,7 @@ const Rules = () => {
         }
     ]
 
-    const [active, setActive] = useState(null);
+    const [active, setActive] = useState(0);
 
     const handleClick = (index) => {
         active !== index ? setActive(index) : setActive(null);
