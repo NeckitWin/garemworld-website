@@ -63,12 +63,36 @@ app.get('/user', (req, res) => {
                 return res.json({message: "Ошибка получения данных пользователя"})
             }
         })
-
-        // return res.json({valid: true, username: req.session.username})
     } else {
         return res.json({valid: false})
     }
 })
+
+app.post('/login',
+    [
+        body('username').trim().escape(),
+        body('password').trim().escape()
+    ],
+    (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.json({message: "Некорректные данные"})
+        }
+        const hashedPassword = crypto.createHash('sha256').update(req.body.password.join('')).digest('hex');
+        const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+
+        db.query(sql, [req.body.username, hashedPassword], (err, result) => {
+            if (err) {
+                console.error("Ошибка авторизации:", err);
+                return res.json({message: "Ошибка авторизации"});
+            }
+            if (result.length > 0) {
+                req.session.username = result[0].username;
+                console.log(`Пользователь ${req.session.username} успешно авторизован`);
+                return res.json({message: true})
+            } else return res.json({message: "Неверный логин или пароль"})
+        });
+    });
 
 app.post('/signup',
     [
@@ -117,35 +141,10 @@ app.post('/signup',
         });
     });
 
-app.post('/login',
-    [
-        body('username').trim().escape(),
-        body('password').trim().escape()
-    ],
-    (req, res) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.json({message: "Некорректные данные"})
-        }
-        const hashedPassword = crypto.createHash('sha256').update(req.body.password.join('')).digest('hex');
-        const sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-
-        db.query(sql, [req.body.username, hashedPassword], (err, result) => {
-            if (err) {
-                console.error("Ошибка авторизации:", err);
-                return res.json({message: "Ошибка авторизации"});
-            }
-            if (result.length > 0) {
-                req.session.username = result[0].username;
-                console.log(`Пользователь ${req.session.username} успешно авторизован`);
-                return res.json({message: true})
-            } else return res.json({message: "Неверный логин или пароль"})
-        });
-    });
-
 app.post('/logout', (req, res) => {
     req.session.destroy();
-    return res.json({message: true})
+    res.clearCookie('connect.sid');
+    return res.json({message: false});
 })
 
 app.listen(8081, () => {

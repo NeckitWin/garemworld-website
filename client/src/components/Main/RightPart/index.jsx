@@ -4,10 +4,22 @@ import Monitoring from "./Monitoring"
 import Votes from "./Votes"
 import Login from "./Login"
 import Profile from "./Profile"
-import {useState} from "react"
+import {useEffect, useState} from "react"
+import axios from "axios";
 
 const RightPart = () => {
     const [login, setLogin] = useState(false)
+
+    axios.defaults.withCredentials = true
+
+    useEffect(() => {
+        axios.get('https://api.garemworld.su/user')
+        .then((response) => {
+            if (response.data.valid === true) setLogin(true)
+            else setLogin(false)
+        })
+    }, [login])
+
     return (
         <div className={s.right_part}>
             {!login && <Login login={login} setLogin={setLogin}/>}

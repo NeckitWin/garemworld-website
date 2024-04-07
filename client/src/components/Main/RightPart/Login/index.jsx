@@ -3,7 +3,7 @@ import {useState} from "react";
 import {NavLink, useNavigate} from "react-router-dom";
 import axios from "axios";
 
-const Login = ({login, setLogin}) => {
+const Login = ({setLogin}) => {
     const [values, setValues] = useState({
         username: '',
         password: ''
@@ -11,11 +11,10 @@ const Login = ({login, setLogin}) => {
 
     const [error, setError] = useState('');
 
-    const navigate = useNavigate()
-
     const handleInput = (event) => {
         setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
     }
+    const navigate = useNavigate()
 
     axios.defaults.withCredentials = true
 
@@ -23,15 +22,15 @@ const Login = ({login, setLogin}) => {
         event.preventDefault()
 
         axios.post('https://api.garemworld.su/login', values)
-            .then(res => {
-                if (res.data.message === true) {
+            .then((response) => {
+                if (response.data.success === true) {
                     setLogin(true)
                     navigate('/')
                 } else {
-                    setError(res.data.message)
+                    setError(response.data.message);
                 }
             })
-            .catch(err => console.log(err))
+            .catch(err => console.error(err));
     }
 
     return (
