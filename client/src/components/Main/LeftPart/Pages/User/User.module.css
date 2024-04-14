@@ -23,15 +23,19 @@
 }
 
 .user_info p {
-    padding: 8px;
+    padding: 12px;
     border-bottom: 2px solid #FFA558;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
 }
 
-.skin {
-    width: 400px;
-    height: 392px;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 10px;
+.user_info span:last-child {
+    color: #FFA558;
+}
+
+.add_skin {
+    margin-top: 20px;
 }
 
 @media (max-width: 768px) {

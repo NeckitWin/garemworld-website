@@ -1,4 +1,5 @@
 import s from './Post.module.css'
+import {NavLink} from "react-router-dom";
 
 const Post = (props) => {
     return (
@@ -8,7 +9,7 @@ const Post = (props) => {
                 <h3>{props.title}</h3>
                 <p>{props.description}</p>
                 <div className={s.post_info}>
-                    <a href={props.link} target="_blank" rel="noreferrer">Узнать больше</a>
+                    <NavLink to={props.link}>Узнать больше</NavLink>
                     <span>{props.date}</span>
                 </div>
             </div>

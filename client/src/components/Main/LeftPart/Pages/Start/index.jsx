@@ -8,7 +8,7 @@ const Start = () => {
             title: 'Авторизация',
             text: 'Зарегистрируйтесь у нас на сайте',
             linktext: 'Зарегистрироваться',
-            link: '/login'
+            link: '/signup'
         },
         {
             icon: 'https://media.tenor.com/hYkRcm80JFwAAAAj/foxy-foxplushy.gif',

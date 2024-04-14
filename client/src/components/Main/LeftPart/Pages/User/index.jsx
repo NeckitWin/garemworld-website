@@ -2,6 +2,7 @@ import s from './User.module.css'
 import {useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import Skin from "./Skin";
 
 const User = () => {
     const [name, setName] = useState('')
@@ -27,16 +28,15 @@ const User = () => {
     return (
         <div className={s.user}>
             <div className={s.user_frame}>
-                <div className={s.skin}>
-                </div>
+                <Skin user={name}/>
                 <div className={s.user_info}>
                     <h3>Данные игрока {name}</h3>
                     <p><span>Дата регистрации</span><span>{date}</span></p>
                     <p><span>Email</span><span>{email}</span></p>
-                    <p><span>Статус в игре</span>Игрок<span></span></p>
+                    <p><span>Статус в игре</span><span>Игрок</span></p>
                 </div>
             </div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={s.add_skin}>
                 <label htmlFor="skin">Загрузить скин</label><br/>
                 <input type="file" name="skin"/><br/>
                 <label htmlFor="cloak">Загрузить плащ</label><br/>
