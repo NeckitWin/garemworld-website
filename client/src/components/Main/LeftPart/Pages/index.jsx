@@ -20,7 +20,7 @@ const Pages = () => {
             element: <Start />
         },
         {
-            path: '/servers',
+            path: '/servers/*',
             element: <Servers />
         },
         {

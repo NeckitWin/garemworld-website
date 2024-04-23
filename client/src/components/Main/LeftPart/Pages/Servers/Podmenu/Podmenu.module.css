@@ -1,0 +1,19 @@
+.servers_menu {
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+.servers_menu a {
+    border-radius: 10px;
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+.servers_menu a:hover {
+    background-color: rgba(50, 50, 50, 0.7);
+    box-shadow: 0 4px 4px rgba(50, 50, 50, 0.5);
+}  .active {
+       background-color: rgba(254, 91, 115, 0.7) !important;
+       box-shadow: 0 4px 4px rgba(254, 91, 115, 0.5) !important;
+   }

@@ -7,6 +7,7 @@ import session from 'express-session'
 import cookieParser from 'cookie-parser'
 import bodyParser from "body-parser";
 import {body, validationResult} from 'express-validator'
+import path from "path";
 
 const IP = config.get('serverIP')
 const userDB = config.get('userDB')
@@ -43,7 +44,7 @@ const db = mysql.createConnection({
 app.get('/user', (req, res) => {
     if (req.session.username) {
         const sql = `
-            SELECT u.email, w.coin, w.gem, ui.date 
+            SELECT u.username, u.email, w.coin, w.gem, ui.date 
             FROM users u 
             LEFT JOIN wallet w ON u.userid = w.userid 
             LEFT JOIN userinfo ui ON u.userid = ui.userid 
@@ -158,6 +159,11 @@ app.get('/logout', (req, res) => {
     res.clearCookie('connect.sid');
     return res.json({message: true});
 })
+
+const skinsPath = path.join("/var/www/server/", 'skins')
+app.use('/skins', express.static(skinsPath))
+const cloaksPath = path.join("/var/www/server/", 'cloaks')
+app.use('/cloaks', express.static(cloaksPath))
 
 app.listen(8081, () => {
     console.log('Server is running on port 8081')

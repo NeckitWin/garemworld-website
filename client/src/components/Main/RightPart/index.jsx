@@ -17,6 +17,13 @@ const RightPart = () => {
         .then((response) => {
             if (response.data.valid === true) setLogin(true)
             else setLogin(false)
+        }).catch(err => {
+            console.error(err)
+            axios.get('https://localhost:8081/user')
+            .then((response) => {
+                if (response.data.valid === true) setLogin(true)
+                else setLogin(false)
+            }).catch(err => console.error(err))
         })
     }, [login])
 

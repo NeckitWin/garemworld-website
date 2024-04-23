@@ -13,12 +13,11 @@ const User = () => {
         axios.get('https://api.garemworld.su/user')
             .then(res => {
                 if (res.data.valid) {
-                    setName(res.data.username)
+                    setName(res.data.result.username)
                     setDate(res.data.result.date)
                     setEmail(res.data.result.email)
                 } else navigate('/signup')
-            })
-            .catch(err => console.log(err))
+            }).catch(err => console.error(err))
     }, [navigate]);
 
     const handleSubmit = async (event) => {
@@ -28,7 +27,7 @@ const User = () => {
     return (
         <div className={s.user}>
             <div className={s.user_frame}>
-                <Skin user={name}/>
+                <Skin key={0} name={name} />
                 <div className={s.user_info}>
                     <h3>Данные игрока {name}</h3>
                     <p><span>Дата регистрации</span><span>{date}</span></p>
