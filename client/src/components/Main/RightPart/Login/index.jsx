@@ -22,6 +22,7 @@ const Login = ({setLogin}) => {
         event.preventDefault()
 
         axios.post('https://api.garemworld.su/login', values)
+            .catch(err => console.log("Ошибка подключения к серверу"))
             .then((response) => {
                 if (response.data.message === true) {
                     setLogin(true)
@@ -31,18 +32,8 @@ const Login = ({setLogin}) => {
                 }
             })
             .catch(err => {
-                console.error(err);
-                axios.post('https://localhost:8081/login', values)
-                    .then((response) => {
-                        if (response.data.message === true) {
-                            setLogin(true)
-                            navigate('/')
-                        } else {
-                            setError(response.data.message);
-                        }
-                    })
-                    .catch(err => console.error(err));
-            });
+                console.log("Ошибка подключения к серверу")
+            })
     }
 
     return (

@@ -21,12 +21,13 @@ const Profile = ({setLogin}) => {
 
     const exit = async () => {
         await axios.get('https://api.garemworld.su/logout')
+            .catch(err => console.log("Ошибка подключения к серверу"))
             .then((response) => {
                 if (response.data.message === true) {
                     setLogin(false)
                 }
             })
-            .catch(err => console.error(err));
+            .catch(err => console.log("Ошибка подключения к серверу"));
     }
     return (
         <div className={s.profile}>

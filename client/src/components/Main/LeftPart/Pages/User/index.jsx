@@ -11,13 +11,14 @@ const User = () => {
     const navigate = useNavigate()
     useEffect(() => {
         axios.get('https://api.garemworld.su/user')
+            .catch(err => console.log("Ошибка подключения к серверу"))
             .then(res => {
                 if (res.data.valid) {
                     setName(res.data.result.username)
                     setDate(res.data.result.date)
                     setEmail(res.data.result.email)
                 } else navigate('/signup')
-            }).catch(err => console.error(err))
+            }).catch(err => console.log("Ошибка подключения к серверу"))
     }, [navigate]);
 
     const handleSubmit = async (event) => {
