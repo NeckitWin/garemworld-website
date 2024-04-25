@@ -4,16 +4,16 @@ import Vote from './Vote'
 const Votes = () => {
     const votes = [
         {
-            img: 'https://topcraft.club/media/projects/12065/tops.png',
-            link: ''
+            img: 'https://topcraft.club/media/projects/12245/tops.png',
+            link: 'https://topcraft.club/servers/12245/'
         },
         {
             img: '/img/icons/widget_vote.webp',
             link: ''
         },
         {
-            img: 'https://mctop.su/media/projects/6977/tops.png',
-            link: ''
+            img: 'https://mctop.su/media/projects/7095/tops.png',
+            link: 'https://mctop.su/servers/7095/'
         }
     ]
     return (

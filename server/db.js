@@ -8,6 +8,7 @@ import cookieParser from 'cookie-parser'
 import bodyParser from "body-parser";
 import {body, validationResult} from 'express-validator'
 import path from "path";
+import * as fs from "node:fs";
 
 const IP = config.get('serverIP')
 const userDB = config.get('userDB')
@@ -160,10 +161,35 @@ app.get('/logout', (req, res) => {
     return res.json({message: true});
 })
 
-const skinsPath = path.join("/var/www/server/", 'skins')
-app.use('/skins', express.static(skinsPath))
-const cloaksPath = path.join("/var/www/server/", 'cloaks')
-app.use('/cloaks', express.static(cloaksPath))
+app.use('/skins', function(req, res, next) {
+    const skinsPath = path.join("/var/www/server/", 'skins', req.path);
+    fs.readFile(skinsPath, function(err, data) {
+        if (err) {
+            res.status(404).end();
+        } else {
+            res.status(200);
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Content-Type', 'image/png');
+            res.end(data);
+            next();
+        }
+    });
+});
+
+app.use('/cloaks', function(req, res, next) {
+    const cloaksPath = path.join("/var/www/server/", 'cloaks', req.path);
+    fs.readFile(cloaksPath, function(err, data) {
+        if (err) {
+            res.status(404).end();
+        } else {
+            res.status(200);
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Content-Type', 'image/png');
+            res.end(data);
+            next();
+        }
+    });
+});
 
 app.listen(8081, () => {
     console.log('Server is running on port 8081')
