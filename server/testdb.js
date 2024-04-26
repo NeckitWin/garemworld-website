@@ -212,7 +212,7 @@ app.post('/uploadskin', (req, res) => {
         },
         fileFilter: (req, file, cb) => {
             if (path.extname(file.originalname) !== '.png') {
-                return cb(new Error('Только файлы PNG допустимы'));
+                return cb(new Error('Только файлы PNG допустимы для скина!'));
             }
             cb(null, true);
         }
@@ -223,6 +223,40 @@ app.post('/uploadskin', (req, res) => {
             return res.json({message: "Ошибка загрузки файла: " + err.message});
         }
         return res.json({message: "Скин успешно загружен"});
+    });
+});
+
+app.post('/uploadcloak', (req, res) => {
+    if (!req.session.username) {
+        return res.json({message: "Вы не авторизованы"});
+    }
+
+    const upload = multer({
+        storage: multer.diskStorage({
+            destination: (req, file, cb) => cb(null, 'C:\\Users\\necki\\Desktop\\Projects\\webstorm\\garemworld\\server\\cloaks'),
+            filename: (req, file, cb) => {
+                const username = req.session.username;
+                const fileExtension = path.extname(file.originalname);
+                const newFilename = `${username}${fileExtension}`;
+                cb(null, newFilename);
+            }
+        }),
+        limits: {
+            fileSize: 8 * 1024 * 1024
+        },
+        fileFilter: (req, file, cb) => {
+            if (path.extname(file.originalname) !== '.png') {
+                return cb(new Error('Только файлы PNG допустимы для плаща!'));
+            }
+            cb(null, true);
+        }
+    }).single('cloak');
+
+    upload(req, res, (err) => {
+        if (err) {
+            return res.json({message: "Ошибка загрузки файла: " + err.message});
+        }
+        return res.json({message: "Плащ успешно загружен! Обновите страницу."});
     });
 });
 

@@ -227,6 +227,40 @@ app.post('/uploadskin', (req, res) => {
     });
 });
 
+app.post('/uploadcloak', (req, res) => {
+    if (!req.session.username) {
+        return res.json({message: "Вы не авторизованы"});
+    }
+
+    const upload = multer({
+        storage: multer.diskStorage({
+            destination: (req, file, cb) => cb(null, '/var/www/server/cloaks'),
+            filename: (req, file, cb) => {
+                const username = req.session.username;
+                const fileExtension = path.extname(file.originalname);
+                const newFilename = `${username}${fileExtension}`;
+                cb(null, newFilename);
+            }
+        }),
+        limits: {
+            fileSize: 8 * 1024 * 1024
+        },
+        fileFilter: (req, file, cb) => {
+            if (path.extname(file.originalname) !== '.png') {
+                return cb(new Error('Только файлы PNG допустимы для плаща!'));
+            }
+            cb(null, true);
+        }
+    }).single('cloak');
+
+    upload(req, res, (err) => {
+        if (err) {
+            return res.json({message: "Ошибка загрузки файла: " + err.message});
+        }
+        return res.json({message: "Плащ успешно загружен! Обновите страницу."});
+    });
+});
+
 app.listen(8081, () => {
     console.log('Сервер запущен! Порт: 8081')
 })
