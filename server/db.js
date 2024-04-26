@@ -223,7 +223,7 @@ app.post('/uploadskin', (req, res) => {
         if (err) {
             return res.json({message: "Ошибка загрузки файла: " + err.message});
         }
-        return res.json({message: "Скин успешно загружен"});
+        return res.json({message: "Скин успешно загружен! Обновите страницу."});
     });
 });
 
