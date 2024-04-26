@@ -9,6 +9,7 @@ import bodyParser from "body-parser";
 import {body, validationResult} from 'express-validator'
 import path from "path";
 import * as fs from "node:fs";
+import multer from "multer";
 
 const IP = config.get('serverIP')
 const userDB = config.get('userDB')
@@ -191,6 +192,41 @@ app.use('/cloaks', function(req, res, next) {
     });
 });
 
+
+app.post('/uploadskin', (req, res) => {
+    if (!req.session.username) {
+        return res.json({message: "Вы не авторизованы"});
+    }
+
+    const upload = multer({
+        storage: multer.diskStorage({
+            destination: (req, file, cb) => cb(null, '/var/www/server/skins'),
+            filename: (req, file, cb) => {
+                const username = req.session.username;
+                const fileExtension = path.extname(file.originalname);
+                const newFilename = `${username}${fileExtension}`;
+                cb(null, newFilename);
+            }
+        }),
+        limits: {
+            fileSize: 8 * 1024 * 1024
+        },
+        fileFilter: (req, file, cb) => {
+            if (path.extname(file.originalname) !== '.png') {
+                return cb(new Error('Только файлы PNG допустимы'));
+            }
+            cb(null, true);
+        }
+    }).single('skin');
+
+    upload(req, res, (err) => {
+        if (err) {
+            return res.json({message: "Ошибка загрузки файла: " + err.message});
+        }
+        return res.json({message: "Скин успешно загружен"});
+    });
+});
+
 app.listen(8081, () => {
-    console.log('Server is running on port 8081')
+    console.log('Сервер запущен! Порт: 8081')
 })
