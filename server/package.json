@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "node db.js",
-    "startdb": "nodemon db.js"
+    "startdb": "nodemon db.js",
+    "starttest": "nodemon testdb.js"
   },
   "author": "",
   "license": "ISC",

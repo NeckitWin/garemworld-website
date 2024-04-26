@@ -10,24 +10,37 @@ const Profile = ({setLogin}) => {
     const [role, setRole] = useState('')
     axios.get('https://api.garemworld.su/user')
         .then(res => {
-            if ( res.data.valid ) {
+            if (res.data.valid) {
                 setName(res.data.username)
                 setCoins(res.data.result.coin)
                 setGems(res.data.result.gem)
                 setRole('Игрок')
             }
         })
-        .catch(err => console.log(err))
+        .catch(() => {
+                axios.get('http://localhost:8081/user').then(res => {
+                    if (res.data.valid) {
+                        setName(res.data.username)
+                        setCoins(res.data.result.coin)
+                        setGems(res.data.result.gem)
+                        setRole('Игрок')
+                    }
+                })
+            }
+        )
 
     const exit = async () => {
         await axios.get('https://api.garemworld.su/logout')
-            .catch(err => console.log("Ошибка подключения к серверу"))
             .then((response) => {
                 if (response.data.message === true) {
                     setLogin(false)
                 }
             })
-            .catch(err => console.log("Ошибка подключения к серверу"));
+            .catch(() => axios.get('http://localhost:8081/logout').then((response) => {
+                if (response.data.message === true) {
+                    setLogin(false)
+                }
+            }));
     }
     return (
         <div className={s.profile}>
@@ -35,7 +48,7 @@ const Profile = ({setLogin}) => {
                 <img src="https://cdn.mc-heads.com/images/3dskulls/128/e7d542a6-2ea3-429d-92e4-22a85ce91587.png"
                      alt="Head"/>
                 <div>
-                    <p>{ name }</p>
+                    <p>{name}</p>
                     <p style={{color: `#f00`}}>{role}</p>
                 </div>
             </div>

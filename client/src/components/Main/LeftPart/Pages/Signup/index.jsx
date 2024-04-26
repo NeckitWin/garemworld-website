@@ -40,7 +40,17 @@ const Signup = () => {
                     setError(res.data.message)
                 }
             })
-            .catch(err => console.log(err))
+            .catch(() =>
+                axios.post('http://localhost:8081/signup', values)
+                    .then(res => {
+                        if (res.data.message === true) {
+                            alert("Регистрация прошла успешно")
+                            navigate('/')
+                        } else {
+                            setError(res.data.message)
+                        }
+                    })
+            )
     }
 
     return (

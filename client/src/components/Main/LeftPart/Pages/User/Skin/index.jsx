@@ -3,7 +3,7 @@ import {useEffect} from "react"
 import * as skinview3d from "skinview3d"
 
 const Skin = ({name}) => {
-    useEffect( () => {
+    useEffect(() => {
         const skinViewer = new skinview3d.SkinViewer({
             canvas: document.getElementById("skin_container"),
             width: 280,
