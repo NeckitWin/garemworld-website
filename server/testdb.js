@@ -212,7 +212,7 @@ app.post('/uploadskin', (req, res) => {
         },
         fileFilter: (req, file, cb) => {
             if (path.extname(file.originalname) !== '.png') {
-                return cb(new Error('Только файлы PNG допустимы для скина!'));
+                return cb(new Error('Только файлы PNG допустимы для скина и не более 8 МБ!'));
             }
             cb(null, true);
         }
@@ -222,7 +222,7 @@ app.post('/uploadskin', (req, res) => {
         if (err) {
             return res.json({message: "Ошибка загрузки файла: " + err.message});
         }
-        return res.json({message: "Скин успешно загружен"});
+        return res.json({message: "Скин успешно загружен! Обновите страницу."});
     });
 });
 
@@ -246,7 +246,7 @@ app.post('/uploadcloak', (req, res) => {
         },
         fileFilter: (req, file, cb) => {
             if (path.extname(file.originalname) !== '.png') {
-                return cb(new Error('Только файлы PNG допустимы для плаща!'));
+                return cb(new Error('Только файлы PNG допустимы для плаща и не более 8 МБ!'));
             }
             cb(null, true);
         }
