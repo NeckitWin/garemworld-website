@@ -30,11 +30,11 @@ const Footer = () => {
             href: 'https://discord.gg/tDGak75V4u'
         },{
             content: 'Публичная оферта',
-            href: '/offer'
+            href: '/offer.txt'
         },
         {
             content: 'Политика конфиденциальности',
-            href: '/privacy'
+            href: '/privacy.txt'
         }
     ]
     return (
