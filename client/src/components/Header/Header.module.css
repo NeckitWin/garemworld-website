@@ -33,6 +33,7 @@ header {
     width: 400px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .podmenu a {
@@ -74,6 +75,15 @@ header {
     transform: translateY(-1px);
 }
 
+.topic {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
 @media only screen and (max-width: 768px) {
     header {
         width: 100%;
@@ -93,5 +103,9 @@ header {
 
     .podmenu a {
         font-size: 11px;
+    }
+
+    .topic {
+        display: none;
     }
 }

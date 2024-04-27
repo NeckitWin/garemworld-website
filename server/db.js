@@ -249,7 +249,7 @@ app.post('/uploadcloak', (req, res) => {
         },
         fileFilter: (req, file, cb) => {
             if (path.extname(file.originalname) !== '.png') {
-                return cb(new Error('Только файлы PNG допустимы для плаща!'));
+                return cb(new Error('Только файлы PNG допустимы для плаща и не более 8 МБ!'));
             }
             cb(null, true);
         }
