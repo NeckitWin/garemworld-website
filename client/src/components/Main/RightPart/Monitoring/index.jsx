@@ -1,15 +1,26 @@
 import s from './Monitoring.module.css'
 import Server from "./Server";
+import {useState} from "react";
+import axios from "axios";
 
 const Monitoring = () => {
+    const [imrpg, setImrpg] = useState(null)
+        axios.get('https://api.garemworld.su/servers').then(res => {
+            setImrpg(res.data.imrpg)
+        }).catch(() =>
+            axios.get('http://localhost:8081/servers').then(res => {
+                setImrpg(res.data.imrpg)
+            })).catch(() => {
+            setImrpg('Сервер отключен')
+        })
     const servers = [
         {
             name: "IndustrialMagicallyRPG",
-            link: "/",
-            online: "в разработке"
+            link: "/servers/IMRPG",
+            online: imrpg
         }, {
-            name: "HighTechnology",
-            link: "/",
+            name: "NewTechnologies",
+            link: "/servers/NT",
             online: "в разработке"
         }
     ]
@@ -21,7 +32,7 @@ const Monitoring = () => {
                     <Server key={index} name={el.name} link={el.link} online={el.online}/>
                 ))}
                 <p href="#" className={s.servers_online}>
-                    Общий онлайн: в разработке
+                    Общий онлайн: {imrpg}
                 </p>
             </div>
         </div>

@@ -16,7 +16,7 @@ const News = () => {
             link: '/servers/imrpg'
         },
         {
-            img: 'https://i.redd.it/24udiikpheu71.gif',
+            img: 'img/news/open_project.png',
             title: 'Открытие проекта!',
             description: 'Мы рады приветствовать вас на нашем проекте!',
             date: '01.04.2024',

@@ -10,6 +10,7 @@ import {body, validationResult} from 'express-validator'
 import path from "path";
 import * as fs from "node:fs";
 import multer from 'multer';
+import {onlineimrpg} from "./minecraft.js";
 
 const IP = config.get('serverIP')
 const userDB = config.get('userDB')
@@ -162,9 +163,9 @@ app.get('/logout', (req, res) => {
     return res.json({message: true});
 })
 
-app.use('/skins', function(req, res, next) {
+app.use('/skins', function (req, res, next) {
     const skinsPath = path.join("/var/www/server/", 'skins', req.path);
-    fs.readFile(skinsPath, function(err, data) {
+    fs.readFile(skinsPath, function (err, data) {
         if (err) {
             res.status(404).end();
         } else {
@@ -177,9 +178,9 @@ app.use('/skins', function(req, res, next) {
     });
 });
 
-app.use('/cloaks', function(req, res, next) {
+app.use('/cloaks', function (req, res, next) {
     const cloaksPath = path.join("/var/www/server/", 'cloaks', req.path);
-    fs.readFile(cloaksPath, function(err, data) {
+    fs.readFile(cloaksPath, function (err, data) {
         if (err) {
             res.status(404).end();
         } else {
@@ -258,6 +259,11 @@ app.post('/uploadcloak', (req, res) => {
         }
         return res.json({message: "Плащ успешно загружен! Обновите страницу."});
     });
+});
+
+
+app.get('/servers', (req, res) => {
+    return res.json({imrpg: onlineimrpg});
 });
 
 app.listen(8081, () => {
