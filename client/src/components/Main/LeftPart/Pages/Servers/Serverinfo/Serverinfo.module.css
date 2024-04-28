@@ -11,11 +11,14 @@
 }
 
 .server_info div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     color: #ffffff;
-    box-shadow: inset 0 0 80px rgba(0, 0, 0);
-    width: 150px;
-    height: 100px;
-    background-color: rgba(254, 92, 114, 1);
+    box-shadow: 0 5px 5px rgba(157, 64, 76, 0.8);
+    width: 160px;
+    background-color: #C24E5D;
     border-radius: 10px;
     padding: 10px;
 }
