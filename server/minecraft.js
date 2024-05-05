@@ -1,16 +1,16 @@
 import server from "minecraft-status"
 
-let onlineimrpg = null;
+let onlineim = null;
 
 const pingServer = (retries = 5) => {
     if (retries === 0) {
-        onlineimrpg = 'Перезагрузка';
+        onlineim = 'Перезагрузка';
         return;
     }
 
     server.MinecraftServerListPing.ping(5, '94.141.101.121', 25565, 3000)
         .then(res => {
-            onlineimrpg = res.players.online;
+            onlineim = res.players.online;
         })
         .catch(() => {
             pingServer(retries - 1);
@@ -19,4 +19,4 @@ const pingServer = (retries = 5) => {
 
 setInterval(pingServer, 30 * 1000);
 
-export {onlineimrpg};
+export {onlineim};

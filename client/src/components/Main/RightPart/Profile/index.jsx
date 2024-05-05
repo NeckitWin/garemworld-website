@@ -2,7 +2,6 @@ import s from './Profile.module.css'
 import {NavLink} from "react-router-dom";
 import {useState} from "react";
 import axios from "axios";
-
 const Profile = ({setLogin}) => {
     const [name, setName] = useState('')
     const [coins, setCoins] = useState(0)
@@ -28,7 +27,6 @@ const Profile = ({setLogin}) => {
                 })
             }
         )
-
     const exit = async () => {
         await axios.get('https://api.garemworld.su/logout')
             .then((response) => {
@@ -63,5 +61,4 @@ const Profile = ({setLogin}) => {
         </div>
     )
 }
-
 export default Profile

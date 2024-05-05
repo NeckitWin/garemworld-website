@@ -22,3 +22,32 @@
     border-radius: 10px;
     padding: 10px;
 }
+
+.modslist {
+    padding: 20px;
+    color: #fff;
+}
+
+.modslist h3 {
+    position: relative;
+    top: -20px;
+}
+
+.modslist ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.modslist li {
+    background-color: rgba(255, 165, 88, 0.9);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 5px rgba(255, 165, 88, 0.6);
+    transition: 0.3s ease;
+}
+
+.modslist li:hover {
+    transform: translateY(-3px);
+}

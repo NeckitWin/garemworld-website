@@ -6,12 +6,12 @@ const Podmenu = ({setServer}) => {
     const servers = {
         "1.7.10": [
             {
-                server:"IndustrialMagicallyRPG",
-                link:"IMRPG"
+                server:"IndustrialMagically",
+                link:"IM"
             },
             {
-                server: "NewTechnologies",
-                link: "NT"
+                server: "SkyrimRPG",
+                link: "SRPG"
             }
         ]
     }

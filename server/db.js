@@ -10,7 +10,7 @@ import {body, validationResult} from 'express-validator'
 import path from "path";
 import * as fs from "node:fs";
 import multer from "multer";
-import {onlineimrpg} from "./minecraft.js";
+import {onlineim} from "./minecraft.js";
 
 
 const IP = config.get('serverIP')
@@ -264,7 +264,7 @@ app.post('/uploadcloak', (req, res) => {
 });
 
 app.get('/servers', (req, res) => {
-    return res.json({imrpg: onlineimrpg});
+    return res.json({im: onlineim});
 });
 
 app.listen(8081, () => {

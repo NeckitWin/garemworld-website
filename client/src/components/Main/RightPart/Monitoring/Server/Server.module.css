@@ -1,18 +1,18 @@
 .server {
     height: 62px;
-    background-color: #fff;
+    /*background-color: rgb(0, 0, 0, 0.2);*/
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.9);
+    color: #fff;
     transition: 0.3s ease;
 } .server:hover {
       transform: scale(1.01);
   }
 .server:hover > .loading {
-    background-color: #99da02;
+    animation: spin 4s linear infinite;
 }
 
 .description {
@@ -22,7 +22,7 @@
 }
 
 .description p {
-    color: rgba(0, 0, 0, 0.6);
+    color: #fff;
     font-size: 12px;
     width: 170px;
 }
@@ -30,7 +30,14 @@
 .loading {
     width: 22px;
     height: 22px;
-    border: 10px solid #99da02;
-    border-radius: 50%;
-    transition: 0.4s ease;
+    border: 5px solid transparent;
+    border-image: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+    border-image-slice: 1;
+    transition: 0.3s ease;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
 }

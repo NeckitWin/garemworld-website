@@ -4,7 +4,7 @@ import Serverinfo from "./Serverinfo";
 import {useState} from "react";
 
 const Servers = () => {
-    const [server, setServer] = useState('IMRPG')
+    const [server, setServer] = useState('IM')
 
     return (
         <div className={s.servers}>
