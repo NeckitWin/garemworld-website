@@ -41,10 +41,10 @@
 }
 
 .modslist li {
-    background-color: rgba(255, 165, 88, 0.9);
+    background-color: rgba(255, 70, 0, 0.7);
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 5px 5px rgba(255, 165, 88, 0.6);
+    box-shadow: 0 5px 5px rgba(255, 70, 0, 0.4);
     transition: 0.3s ease;
 }
 
